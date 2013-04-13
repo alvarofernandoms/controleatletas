@@ -153,7 +153,7 @@ public class CadastroBoxeador extends javax.swing.JFrame {
 
     private boolean validarCampos() {
         if (jTextFieldNome.getText().trim().length() == 0) {
-            this.exibirInformacao("O valor do campo 'Nome' nÃ£o foi informado.");
+            this.exibirInformacao("O valor do campo 'Nome' não foi informado.");
             jTextFieldNome.requestFocus();
             return false;
         }
@@ -395,7 +395,7 @@ public class CadastroBoxeador extends javax.swing.JFrame {
     }
 
     private void exibirInformacao(String info) {
-        JOptionPane.showMessageDialog(this, info, "AtenÃ§Ã£o", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void atualizarCategoriaPeso() {
@@ -675,7 +675,7 @@ public class CadastroBoxeador extends javax.swing.JFrame {
                 .addGap(94, 94, 94))
         );
 
-        jTabbedPane1.addTab("InformaÃ§Ãµes Gerais", jPanel1);
+        jTabbedPane1.addTab("Informações Gerais", jPanel1);
 
         jLabelLogradouro.setText("Logradouro:");
 
@@ -764,7 +764,7 @@ public class CadastroBoxeador extends javax.swing.JFrame {
                 .addGap(133, 133, 133))
         );
 
-        jTabbedPane1.addTab("EndereÃ§o", jPanel2);
+        jTabbedPane1.addTab("Endereço", jPanel2);
 
         jLabelCategoria.setText("Categoria:");
 
@@ -785,9 +785,9 @@ public class CadastroBoxeador extends javax.swing.JFrame {
 
         jLabelTotalLutas.setText("Total de Lutas:");
 
-        jLabelTotalVitorias.setText("Total de VitÃ³rias:");
+        jLabelTotalVitorias.setText("Total de Vitórias:");
 
-        jLabelTotalVitoriasNocaute.setText("Total de VitÃ³rias por Nocaute:");
+        jLabelTotalVitoriasNocaute.setText("Total de Vitórias por Nocaute:");
 
         jLabelTotalEmpates.setText("Total de Empates:");
 
@@ -797,7 +797,7 @@ public class CadastroBoxeador extends javax.swing.JFrame {
 
         jTextFieldCategoriaPeso.setEnabled(false);
 
-        jLabelPremiacoes.setText("PremiaÃ§Ãµes:");
+        jLabelPremiacoes.setText("Premiaçõess:");
 
         jScrollPane2.setViewportView(jListPremiacoes);
 
@@ -912,7 +912,7 @@ public class CadastroBoxeador extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Ficha TÃ©cnica", jPanel3);
+        jTabbedPane1.addTab("Ficha Técnica", jPanel3);
 
         jButtonAlterar.setText("Alterar");
         jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {

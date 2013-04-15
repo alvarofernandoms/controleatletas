@@ -20,7 +20,7 @@ public class Rugbyer extends Atleta {
 	private int totalEmpates;
 	private int totalDerrotas;
 	private int totalTry; //Fixar a bola com a mão na área depois da linha do in-goal.
-	private int totalConversão; //Após marcado o Try, fazer a bola passar por cima da trave e entre os postes.
+	private int totalConversao; //Após marcado o Try, fazer a bola passar por cima da trave e entre os postes.
 	private int totalDropGoal; //fazer a bola passar por cima da trave ao longo da partida.
 	private int totalPenalidades; //Faltas graves,  bola no local da infração e chutá-la em direção às traves. 
 	
@@ -93,12 +93,12 @@ public class Rugbyer extends Atleta {
 		this.totalTry = totalTry;
 	}
 
-	public int getTotalConversão() {
-		return totalConversão;
+	public int getTotalConversao() {
+		return totalConversao;
 	}
 
-	public void setTotalConversão(int totalConversão) {
-		this.totalConversão = totalConversão;
+	public void setTotalConversao(int totalConversao) {
+		this.totalConversao = totalConversao;
 	}
 
 	public int getTotalDropGoal() {
@@ -152,5 +152,14 @@ public class Rugbyer extends Atleta {
 		else {
 			return "";
 		}
+	}
+	private static double obterWinRate(int totalVitorias, int totalPartidas){
+		return ((totalVitorias/totalPartidas)*100);
+	}
+	private static double obterDrawRate(int totalEmpates, int totalPartidas){
+		return ((totalEmpates/totalPartidas)*100);
+	}
+	private static double obterLoseRate(int totalDerrotas, int totalPartidas){
+		return ((totalDerrotas/totalPartidas)*100);
 	}
 }

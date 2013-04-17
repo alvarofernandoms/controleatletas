@@ -14,7 +14,8 @@ public class Rugbyer extends Atleta {
 	//Posição: Se Pilar, Hooker, Segunda linha, Asa, Oitava, 
 	//Scrum-half, Fly half, Primeiro Centro, Segundo Centro, Ponta, FullBack
 	//Números de 1 a 15
-	private char time;
+	private String posicao;
+	private String time;
 	private int totalPartidas;
 	private int totalVitorias;
 	private int totalEmpates;
@@ -45,11 +46,11 @@ public class Rugbyer extends Atleta {
 		this.numeroCamisa = numeroCamisa;
 	}
 
-	public char getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(char time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 
@@ -117,9 +118,17 @@ public class Rugbyer extends Atleta {
 		this.totalPenalidades = totalPenalidades;
 	}
 	
+	public void setPosicao(String posicao) {
+		this.posicao = posicao;
+	}
+
+	public String getPosicao() {
+		return posicao;
+	}
+	
 	//Posição: Se Pilar, Hooker, Segunda linha, Asa, Oitava, 
 	//Scrum-half, Fly half, Primeiro Centro, Segundo Centro, Ponta, FullBack
-	private static String obterPosicaoDadoNumeroCamisa(int numeroCamisa){
+	static String obterPosicaoDadoNumeroCamisa(int numeroCamisa){
 		if(numeroCamisa == 1){
 			return "Pilar fechado";
 		} else if (numeroCamisa == 2){

@@ -39,13 +39,14 @@ public class CadastroRugbyer extends javax.swing.JFrame {
     private void limparCampos() {
         jTextFieldAltura.setText("0.0");
         jTextFieldBairro.setText(null);
-        jTextFieldCategoriaPeso.setText(null);
+        jTextFieldPosicao.setText("Pilar Fechado");
         jTextFieldCep.setText(null);
         jTextFieldCidade.setText(null);
         jTextFieldComplemento.setText(null);
         jTextFieldCpf.setText(null);
         jTextFieldDataNascimento.setText(null);
         jTextFieldTotalDropGoal.setText("0");
+        jTextFieldTotalPenalidades.setText("0");
         jComboBoxEstado.setSelectedIndex(0);
         jTextFieldLogradouro.setText(null);
         jTextFieldNome.setText(null);
@@ -58,15 +59,15 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         jTextFieldTotalDerrotas.setText("0");
         jTextFieldTotalTry.setText("0");
         jTextFieldTotalEmpates.setText("0");
+        jTextFieldTime.setText(null);
         jTextFieldTotalPartidas.setText("0");
         jTextFieldTotalConversao.setText("0");
         jTextFieldTotalVitorias.setText("0");
         telefonesListModel.clear();
         premiacaoListModel.clear();
         jComboBoxSexo.setSelectedIndex(0);
-        jComboBoxCategoria.setSelectedIndex(0);
-        jComboBoxEstilo.setSelectedIndex(0);
-        this.atualizarCategoriaPeso();
+        jComboBoxNumeroCamisa.setSelectedIndex(0);
+        this.atualizarPosicao();
     }
 
     private void preencherCampos() {
@@ -75,7 +76,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
 
         jTextFieldAltura.setText(Double.toString(umRugbyer.getAltura()));
         jTextFieldBairro.setText(umRugbyer.getEndereco().getBairro());
-        jTextFieldCategoriaPeso.setText(Double.toString(umRugbyer.getPeso()));
+        
         jTextFieldCep.setText(umRugbyer.getEndereco().getCep());
         jTextFieldCidade.setText(umRugbyer.getEndereco().getCidade());
         jTextFieldComplemento.setText(umRugbyer.getEndereco().getComplemento());
@@ -97,11 +98,15 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         jTextFieldRg.setText(umRugbyer.getRg());
         jTextFieldTotalDerrotas.setText(Integer.toString(umRugbyer.getTotalDerrotas()));
         jTextFieldTotalEmpates.setText(Integer.toString(umRugbyer.getTotalEmpates()));
+        jTextFieldTime.setText(umRugbyer.getTime());
         jTextFieldTotalPartidas.setText(Integer.toString(umRugbyer.getTotalPartidas()));
         jTextFieldTotalVitorias.setText(Integer.toString(umRugbyer.getTotalVitorias()));
         jTextFieldTotalTry.setText(Integer.toString(umRugbyer.getTotalTry()));
         jTextFieldTotalConversao.setText(Integer.toString(umRugbyer.getTotalConversao()));
         jTextFieldTotalDropGoal.setText(Integer.toString(umRugbyer.getTotalDropGoal()));
+        jTextFieldTotalPenalidades.setText(Integer.toString(umRugbyer.getTotalPenalidades()));
+        jComboBoxNumeroCamisa.setSelectedItem(Integer.toString(umRugbyer.getNumeroCamisa()));
+        jTextFieldPosicao.setText(umRugbyer.getPosicao());
         telefonesListModel.clear();
         telefones = umRugbyer.getTelefones();
         for (String t : telefones) {
@@ -121,9 +126,8 @@ public class CadastroRugbyer extends javax.swing.JFrame {
             case SEXO_FEMININO_VALOR:
                 jComboBoxSexo.setSelectedIndex(SEXO_FEMININO_INDICE);
                 break;
-        }
-
-        this.atualizarCategoriaPeso();
+        }       
+        this.atualizarPosicao();
     }
 
     private boolean validarCampos() {
@@ -169,6 +173,13 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         } catch (Exception ex) {
             this.exibirInformacao("O valor do campo 'TotalDropGoal' É inválido.");
             jTextFieldTotalDropGoal.requestFocus();
+            return false;
+        }
+        try {
+            Integer.parseInt(jTextFieldTotalPenalidades.getText());
+        } catch (Exception ex) {
+            this.exibirInformacao("O valor do campo 'TotalPenalidades' É inválido.");
+            jTextFieldTotalPenalidades.requestFocus();
             return false;
         }
         try {
@@ -220,13 +231,14 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         boolean registroSelecionado = (umRugbyer != null);
         jTextFieldAltura.setEnabled(modoAlteracao);
         jTextFieldBairro.setEnabled(modoAlteracao);
-        jTextFieldCategoriaPeso.setEnabled(false);
+        jTextFieldPosicao.setEnabled(false);
         jTextFieldCep.setEnabled(modoAlteracao);
         jTextFieldCidade.setEnabled(modoAlteracao);
         jTextFieldComplemento.setEnabled(modoAlteracao);
         jTextFieldCpf.setEnabled(modoAlteracao);
         jTextFieldDataNascimento.setEnabled(modoAlteracao);
         jTextFieldTotalDropGoal.setEnabled(modoAlteracao);
+        jTextFieldTotalPenalidades.setEnabled(modoAlteracao);
         jComboBoxEstado.setEnabled(modoAlteracao);
         jTextFieldLogradouro.setEnabled(modoAlteracao);
         jTextFieldNome.setEnabled(modoAlteracao);
@@ -239,6 +251,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         jTextFieldTotalDerrotas.setEnabled(modoAlteracao);
         jTextFieldTotalTry.setEnabled(modoAlteracao);
         jTextFieldTotalEmpates.setEnabled(modoAlteracao);
+        jTextFieldTime.setEnabled(modoAlteracao);
         jTextFieldTotalPartidas.setEnabled(modoAlteracao);
         jTextFieldTotalConversao.setEnabled(modoAlteracao);
         jTextFieldTotalVitorias.setEnabled(modoAlteracao);
@@ -253,8 +266,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         jButtonAdicionarPremiacao.setEnabled(modoAlteracao);
         jButtonRemoverPremiacao.setEnabled(modoAlteracao);
         jComboBoxSexo.setEnabled(modoAlteracao);
-        jComboBoxCategoria.setEnabled(modoAlteracao);
-        jComboBoxEstilo.setEnabled(modoAlteracao);
+        jComboBoxNumeroCamisa.setEnabled(modoAlteracao);
         jTableListaRugbyers.setEnabled(modoAlteracao == false);
     }
 
@@ -316,12 +328,15 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         umRugbyer.setCpf(jTextFieldCpf.getText());
         umRugbyer.setRg(jTextFieldRg.getText());
         umRugbyer.setTotalDropGoal(Integer.parseInt(jTextFieldTotalDropGoal.getText()));
+        umRugbyer.setTotalPenalidades(Integer.parseInt(jTextFieldTotalPenalidades.getText()));
         umRugbyer.setTotalDerrotas(Integer.parseInt(jTextFieldTotalDerrotas.getText()));
         umRugbyer.setTotalTry(Integer.parseInt(jTextFieldTotalTry.getText()));
         umRugbyer.setTotalEmpates(Integer.parseInt(jTextFieldTotalEmpates.getText()));
+        umRugbyer.setTime(jTextFieldTime.getText());
         umRugbyer.setTotalPartidas(Integer.parseInt(jTextFieldTotalPartidas.getText()));
         umRugbyer.setTotalConversao(Integer.parseInt(jTextFieldTotalConversao.getText()));
         umRugbyer.setTotalVitorias(Integer.parseInt(jTextFieldTotalVitorias.getText()));
+        umRugbyer.setNumeroCamisa(Integer.parseInt((String)jComboBoxNumeroCamisa.getSelectedItem()));
 
         switch (jComboBoxSexo.getSelectedIndex()) {
             case SEXO_MASCULINO_INDICE:
@@ -332,6 +347,54 @@ public class CadastroRugbyer extends javax.swing.JFrame {
                 break;
         }
 
+        
+        switch (jComboBoxNumeroCamisa.getSelectedIndex()) {
+        case 0:
+            umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(1));
+            break;
+        case 1:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(2));
+            break;
+        case 2:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(3));
+            break;
+        case 3:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(4));
+            break;
+        case 4:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(5));
+            break;
+        case 5:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(6));
+            break;
+        case 6:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(7));
+            break;
+        case 7:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(8));
+            break;
+        case 8:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(9));
+            break;
+        case 9:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(10));
+            break;
+        case 10:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(11));
+            break;
+        case 11:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(12));
+            break;
+        case 12:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(13));
+            break;
+        case 13:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(14));
+            break;
+        case 14:
+        	umRugbyer.setPosicao(Rugbyer.obterPosicaoDadoNumeroCamisa(15));
+            break;
+        }
         if (novoRegistro == true) {
             controleRugbyer.adicionar(umRugbyer);
         }
@@ -355,19 +418,58 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
     }
 
-   private void atualizarCategoriaPeso() {
-        char categoria;
-        switch (jComboBoxCategoria.getSelectedIndex()) {
-            case CATEGORIA_AMADOR_INDICE:
-                categoria = CATEGORIA_AMADOR_VALOR;
+   private void atualizarPosicao() {
+        int numeroCamisa;
+        switch (jComboBoxNumeroCamisa.getSelectedIndex()) {
+            case 0:
+                numeroCamisa = 1;
                 break;
-            case CATEGORIA_PROFISSIONAL_INDICE:
-                categoria = CATEGORIA_PROFISSIONAL_VALOR;
+            case 1:
+                numeroCamisa = 2;
+                break;
+            case 2:
+                numeroCamisa = 3;
+                break;
+            case 3:
+                numeroCamisa = 4;
+                break;
+            case 4:
+                numeroCamisa = 5;
+                break;
+            case 5:
+                numeroCamisa = 6;
+                break;
+            case 6:
+                numeroCamisa = 7;
+                break;
+            case 7:
+                numeroCamisa = 8;
+                break;
+            case 8:
+                numeroCamisa = 9;
+                break;
+            case 9:
+                numeroCamisa = 10;
+                break;
+            case 10:
+                numeroCamisa = 11;
+                break;
+            case 11:
+                numeroCamisa = 12;
+                break;
+            case 12:
+                numeroCamisa = 13;
+                break;
+            case 13:
+                numeroCamisa = 14;
+                break;
+            case 14:
+                numeroCamisa = 15;
                 break;
             default:
                 return;
         }
-        jTextFieldCategoriaPeso.setText(Rugbyer.obterCategoriaPesoNome(categoria, Double.parseDouble(jTextFieldPeso.getText())));
+        jTextFieldPosicao.setText(Rugbyer.obterPosicaoDadoNumeroCamisa(numeroCamisa));
     }
 
     @SuppressWarnings("unchecked")
@@ -420,14 +522,16 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         jComboBoxEstado = new javax.swing.JComboBox();
         jTextFieldCep = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabelCategoria = new javax.swing.JLabel();
-        jComboBoxCategoria = new javax.swing.JComboBox();
-        jLabelCategoriaPeso = new javax.swing.JLabel();
-        jLabelEstilo = new javax.swing.JLabel();
-        jComboBoxEstilo = new javax.swing.JComboBox();
+        jLabelNumeroCamisa = new javax.swing.JLabel();
+        jComboBoxNumeroCamisa = new javax.swing.JComboBox();
+        jLabelPosicao = new javax.swing.JLabel();
         jTextFieldTotalDropGoal = new javax.swing.JTextField();
         jLabelTotalDropGoal = new javax.swing.JLabel();
+        jTextFieldTotalPenalidades = new javax.swing.JTextField();
+        jLabelTotalPenalidades = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
         jLabelTotalPartidas = new javax.swing.JLabel();
+        jTextFieldTime = new javax.swing.JTextField();
         jTextFieldTotalPartidas = new javax.swing.JTextField();
         jTextFieldTotalVitorias = new javax.swing.JTextField();
         jLabelTotalVitorias = new javax.swing.JLabel();
@@ -439,7 +543,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         jTextFieldTotalDerrotas = new javax.swing.JTextField();
         jLabelTotalTry = new javax.swing.JLabel();
         jTextFieldTotalTry = new javax.swing.JTextField();
-        jTextFieldCategoriaPeso = new javax.swing.JTextField();
+        jTextFieldPosicao = new javax.swing.JTextField();
         jLabelPremiacoes = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPremiacoes = new javax.swing.JList();
@@ -723,20 +827,18 @@ public class CadastroRugbyer extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Endereço", jPanel2);
 
-        jLabelCategoria.setText("Categoria:");
+        jLabelNumeroCamisa.setText("Número da Camisa:");
 
-        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Amador", "Profissional" }));
-        jComboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxNumeroCamisa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"}));
+        jComboBoxNumeroCamisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxCategoriaActionPerformed(evt);
+                jComboBoxNumeroCamisaActionPerformed(evt);
             }
         });
 
-        jLabelCategoriaPeso.setText("Categoria (Peso):");
-
-        jLabelEstilo.setText("Estilo:");
-
-        jComboBoxEstilo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ortodoxo (destro)", "Southpaw (canhoto)" }));
+        jLabelPosicao.setText("Posição:");
+        
+        jLabelTime.setText("Time:");
 
         jLabelTotalPartidas.setText("Total de Partidas:");
 
@@ -751,8 +853,10 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         jLabelTotalConversao.setText("Total de Conversões:");
         
         jLabelTotalDropGoal.setText("Total de DropGoal:");
+        
+        jLabelTotalPenalidades.setText("Total de Penalidades:");
 
-        jTextFieldCategoriaPeso.setEnabled(false);
+        jTextFieldPosicao.setEnabled(false);
 
         jLabelPremiacoes.setText("Premiaçõess:");
 
@@ -779,16 +883,17 @@ public class CadastroRugbyer extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCategoria)
-                    .addComponent(jLabelCategoriaPeso)
-                    .addComponent(jLabelEstilo)
+                    .addComponent(jLabelNumeroCamisa)
+                    .addComponent(jLabelPosicao) 
+                    .addComponent(jLabelTime)
                     .addComponent(jLabelTotalPartidas)
                     .addComponent(jLabelTotalVitorias)
                     .addComponent(jLabelTotalEmpates)
                     .addComponent(jLabelTotalDerrotas)
                     .addComponent(jLabelTotalTry)
                     .addComponent(jLabelTotalConversao)
-                    .addComponent(jLabelTotalDropGoal))
+                    .addComponent(jLabelTotalDropGoal)
+                    .addComponent(jLabelTotalPenalidades))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldTotalTry, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
@@ -796,11 +901,12 @@ public class CadastroRugbyer extends javax.swing.JFrame {
                     .addComponent(jTextFieldTotalEmpates, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                     .addComponent(jTextFieldTotalConversao, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                     .addComponent(jTextFieldTotalVitorias, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTime, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                     .addComponent(jTextFieldTotalPartidas, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                     .addComponent(jTextFieldTotalDropGoal, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                    .addComponent(jComboBoxEstilo, 0, 307, Short.MAX_VALUE)
-                    .addComponent(jTextFieldCategoriaPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                    .addComponent(jComboBoxCategoria, 0, 307, Short.MAX_VALUE))
+                    .addComponent(jTextFieldTotalPenalidades, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)                  
+                    .addComponent(jTextFieldPosicao, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                    .addComponent(jComboBoxNumeroCamisa, 0, 307, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelPremiacoes)
@@ -819,18 +925,18 @@ public class CadastroRugbyer extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCategoria)
+                            .addComponent(jComboBoxNumeroCamisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelNumeroCamisa)
                             .addComponent(jLabelPremiacoes))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCategoriaPeso)
-                            .addComponent(jTextFieldCategoriaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelPosicao)
+                            .addComponent(jTextFieldPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEstilo))
-                        
+                            .addComponent(jLabelTime)
+                            .addComponent(jTextFieldTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTotalPartidas)
@@ -859,7 +965,11 @@ public class CadastroRugbyer extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTotalDropGoal)
-                            .addComponent(jTextFieldTotalDropGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldTotalDropGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelTotalPenalidades)
+                                .addComponent(jTextFieldTotalPenalidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -925,7 +1035,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
             });
             jTableListaRugbyers.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jTableListaRugbyersMouseClicked(evt);
+                    jTableListaRugbyersMouseClicked(evt);                  
                 }
             });
             jScrollPane4.setViewportView(jTableListaRugbyers);
@@ -982,9 +1092,9 @@ public class CadastroRugbyer extends javax.swing.JFrame {
             pack();
         }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-        this.atualizarCategoriaPeso();
-    }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
+    private void jComboBoxNumeroCamisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNumeroCamisaActionPerformed
+        this.atualizarPosicao();
+    }//GEN-LAST:event_jComboBoxNumeroCamisaActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
         umRugbyer = null;
@@ -1017,7 +1127,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPesoPropertyChange
 
     private void jTextFieldPesoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPesoFocusLost
-        this.atualizarCategoriaPeso();
+        this.atualizarPosicao();
     }//GEN-LAST:event_jTextFieldPesoFocusLost
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
@@ -1061,7 +1171,7 @@ private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//
         Rugbyer rugbyerPesquisado = controleRugbyer.pesquisar(nome);
 
         if (rugbyerPesquisado == null) {
-            exibirInformacao("Rugbyer nÃ£o encontrado.");
+            exibirInformacao("Rugbyer não encontrado.");
         } else {
             this.umRugbyer = rugbyerPesquisado;
             this.preencherCampos();
@@ -1087,7 +1197,7 @@ private void jButtonRemoverPremiacaoActionPerformed(java.awt.event.ActionEvent e
 private void jTableListaRugbyersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaRugbyersMouseClicked
     if (jTableListaRugbyers.isEnabled()) {
         DefaultTableModel model = (DefaultTableModel) jTableListaRugbyers.getModel();
-        String nome = (String) model.getValueAt(jTableListaRugbyers.getSelectedRow(), 0);
+        String nome = (String) model.getValueAt(jTableListaRugbyers.getSelectedRow(), 0);        
         this.pesquisarRugbyer(nome);
     }
 }//GEN-LAST:event_jTableListaRugbyersMouseClicked
@@ -1107,22 +1217,21 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JButton jButtonRemoverPremiacao;
     private javax.swing.JButton jButtonRemoverTelefone;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JComboBox jComboBoxCategoria;
+    private javax.swing.JComboBox jComboBoxNumeroCamisa;
     private javax.swing.JComboBox jComboBoxEstado;
-    private javax.swing.JComboBox jComboBoxEstilo;
     private javax.swing.JComboBox jComboBoxSexo;
     private javax.swing.JLabel jLabelAltura;
     private javax.swing.JLabel jLabelBairro;
-    private javax.swing.JLabel jLabelCategoria;
-    private javax.swing.JLabel jLabelCategoriaPeso;
+    private javax.swing.JLabel jLabelNumeroCamisa;
+    private javax.swing.JLabel jLabelPosicao;
     private javax.swing.JLabel jLabelCep;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComplemento;
     private javax.swing.JLabel jLabelCpf;
     private javax.swing.JLabel jLabelDataNascimento;
     private javax.swing.JLabel jLabelTotalDropGoal;
+    private javax.swing.JLabel jLabelTotalPenalidades;
     private javax.swing.JLabel jLabelEstado;
-    private javax.swing.JLabel jLabelEstilo;
     private javax.swing.JLabel jLabelListaRugbyers;
     private javax.swing.JLabel jLabelLogradouro;
     private javax.swing.JLabel jLabelNome;
@@ -1138,6 +1247,7 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JLabel jLabelTotalDerrotas;
     private javax.swing.JLabel jLabelTotalTry;
     private javax.swing.JLabel jLabelTotalEmpates;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JLabel jLabelTotalPartidas;
     private javax.swing.JLabel jLabelTotalVitorias;
     private javax.swing.JLabel jLabelTotalConversao;
@@ -1155,13 +1265,14 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JTable jTableListaRugbyers;
     private javax.swing.JTextField jTextFieldAltura;
     private javax.swing.JTextField jTextFieldBairro;
-    private javax.swing.JTextField jTextFieldCategoriaPeso;
+    private javax.swing.JTextField jTextFieldPosicao;
     private javax.swing.JTextField jTextFieldCep;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldDataNascimento;
     private javax.swing.JTextField jTextFieldTotalDropGoal;
+    private javax.swing.JTextField jTextFieldTotalPenalidades;
     private javax.swing.JTextField jTextFieldLogradouro;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNomeMae;
@@ -1173,6 +1284,7 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JTextField jTextFieldTotalDerrotas;
     private javax.swing.JTextField jTextFieldTotalTry;
     private javax.swing.JTextField jTextFieldTotalEmpates;
+    private javax.swing.JTextField jTextFieldTime;
     private javax.swing.JTextField jTextFieldTotalPartidas;
     private javax.swing.JTextField jTextFieldTotalConversao;
     private javax.swing.JTextField jTextFieldTotalVitorias;

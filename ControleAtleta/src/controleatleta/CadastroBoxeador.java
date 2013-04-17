@@ -966,7 +966,7 @@ public class CadastroBoxeador extends javax.swing.JFrame {
             });
             jTableListaBoxeadores.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jTableListaBoxeadoresMouseClicked(evt);
+                    jTableListaBoxeadoresMouseClicked(evt);                
                 }
             });
             jScrollPane4.setViewportView(jTableListaBoxeadores);
@@ -1076,33 +1076,33 @@ public class CadastroBoxeador extends javax.swing.JFrame {
         this.habilitarDesabilitarCampos();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
-private void jButtonAdicionarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarTelefoneActionPerformed
-    CadastroTelefone cadastro = new CadastroTelefone(this, true);
-    cadastro.setVisible(true);
-    if (cadastro.getTelefone() != null) {
-        telefonesListModel.addElement(cadastro.getTelefone());
-    }
-    cadastro.dispose();
-}//GEN-LAST:event_jButtonAdicionarTelefoneActionPerformed
+    private void jButtonAdicionarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarTelefoneActionPerformed
+    	CadastroTelefone cadastro = new CadastroTelefone(this, true);
+    	cadastro.setVisible(true);
+    	if (cadastro.getTelefone() != null) {
+        	telefonesListModel.addElement(cadastro.getTelefone());
+    	}
+    	cadastro.dispose();
+	}//GEN-LAST:event_jButtonAdicionarTelefoneActionPerformed
 
-private void jButtonRemoverTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverTelefoneActionPerformed
-    if (jListTelefones.getSelectedIndex() != -1) {
-        telefonesListModel.removeElementAt(jListTelefones.getSelectedIndex());
-    }
-}//GEN-LAST:event_jButtonRemoverTelefoneActionPerformed
+	private void jButtonRemoverTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverTelefoneActionPerformed
+    	if (jListTelefones.getSelectedIndex() != -1) {
+    		telefonesListModel.removeElementAt(jListTelefones.getSelectedIndex());
+    	}
+	}//GEN-LAST:event_jButtonRemoverTelefoneActionPerformed
 
-private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-    String pesquisa = JOptionPane.showInputDialog("Informe o nome do Boxeador.");
-    if (pesquisa != null) {
-        this.pesquisarBoxeador(pesquisa);
-    }
-}//GEN-LAST:event_jButtonPesquisarActionPerformed
+	private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+    	String pesquisa = JOptionPane.showInputDialog("Informe o nome do Boxeador.");
+    	if (pesquisa != null) {
+        	this.pesquisarBoxeador(pesquisa);
+    	}
+	}//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void pesquisarBoxeador(String nome) {
         Boxeador boxeadorPesquisado = controleBoxeador.pesquisar(nome);
 
         if (boxeadorPesquisado == null) {
-            exibirInformacao("Boxeador n√£o encontrado.");
+            exibirInformacao("Boxeador n„o encontrado.");
         } else {
             this.umBoxeador = boxeadorPesquisado;
             this.preencherCampos();
@@ -1110,32 +1110,32 @@ private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//
         }
     }
 
-private void jButtonAdicionarPremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarPremiacaoActionPerformed
-    CadastroPremiacao cadastro = new CadastroPremiacao(this, true);
-    cadastro.setVisible(true);
-    if (cadastro.getPremiacao() != null) {
-        premiacaoListModel.addElement(cadastro.getPremiacao());
-    }
-    cadastro.dispose();
-}//GEN-LAST:event_jButtonAdicionarPremiacaoActionPerformed
+    private void jButtonAdicionarPremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarPremiacaoActionPerformed
+    	CadastroPremiacao cadastro = new CadastroPremiacao(this, true);
+    	cadastro.setVisible(true);
+    	if (cadastro.getPremiacao() != null) {
+        	premiacaoListModel.addElement(cadastro.getPremiacao());
+    	}
+    	cadastro.dispose();
+	}//GEN-LAST:event_jButtonAdicionarPremiacaoActionPerformed
 
-private void jButtonRemoverPremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverPremiacaoActionPerformed
-    if (jListPremiacoes.getSelectedIndex() != -1) {
-        premiacaoListModel.removeElementAt(jListPremiacoes.getSelectedIndex());
-    }
-}//GEN-LAST:event_jButtonRemoverPremiacaoActionPerformed
+	private void jButtonRemoverPremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverPremiacaoActionPerformed
+    	if (jListPremiacoes.getSelectedIndex() != -1) {
+        	premiacaoListModel.removeElementAt(jListPremiacoes.getSelectedIndex());
+    	}
+	}//GEN-LAST:event_jButtonRemoverPremiacaoActionPerformed
 
-private void jTableListaBoxeadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaBoxeadoresMouseClicked
-    if (jTableListaBoxeadores.isEnabled()) {
-        DefaultTableModel model = (DefaultTableModel) jTableListaBoxeadores.getModel();
-        String nome = (String) model.getValueAt(jTableListaBoxeadores.getSelectedRow(), 0);
-        this.pesquisarBoxeador(nome);
-    }
-}//GEN-LAST:event_jTableListaBoxeadoresMouseClicked
+	private void jTableListaBoxeadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaBoxeadoresMouseClicked
+    	if (jTableListaBoxeadores.isEnabled()) {
+    		DefaultTableModel model = (DefaultTableModel) jTableListaBoxeadores.getModel();
+    		String nome = (String) model.getValueAt(jTableListaBoxeadores.getSelectedRow(), 0);
+        	this.pesquisarBoxeador(nome);
+    	}
+	}//GEN-LAST:event_jTableListaBoxeadoresMouseClicked
 
-private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataNascimentoActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_jTextFieldDataNascimentoActionPerformed
+	private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataNascimentoActionPerformed
+		// TODO add your handling code here:
+	}//GEN-LAST:event_jTextFieldDataNascimentoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarPremiacao;

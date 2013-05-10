@@ -132,7 +132,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
 
     private boolean validarCampos() {
         if (jTextFieldNome.getText().trim().length() == 0) {
-            this.exibirInformacao("O valor do campo 'Nome' n„o foi informado.");
+            this.exibirInformacao("O valor do campo 'Nome' n√£o foi informado.");
             jTextFieldNome.requestFocus();
             return false;
         }
@@ -140,7 +140,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
             try {
                 dateFormat.parse(jTextFieldDataNascimento.getText());
             } catch (ParseException ex) {
-                this.exibirInformacao("O valor do campo 'Data de Nascimento' … inv·lido.");
+                this.exibirInformacao("O valor do campo 'Data de Nascimento' √© inv√°lido.");
                 jTextFieldDataNascimento.requestFocus();
                 return false;
             }
@@ -148,14 +148,14 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         try {
             Double.parseDouble(jTextFieldAltura.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Altura' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'Altura' √© inv√°lido.");
             jTextFieldAltura.requestFocus();
             return false;
         }
         try {
             Double.parseDouble(jTextFieldPeso.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Peso' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'Peso' √© inv√°lido.");
             jTextFieldPeso.requestFocus();
             return false;
         }
@@ -163,7 +163,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
             try {
                 Integer.parseInt(jTextFieldNumero.getText());
             } catch (Exception ex) {
-                this.exibirInformacao("O valor do campo 'N˙mero' … inv·lido.");
+                this.exibirInformacao("O valor do campo 'N√∫mero' √© inv√°lido.");
                 jTextFieldNumero.requestFocus();
                 return false;
             }
@@ -171,56 +171,56 @@ public class CadastroRugbyer extends javax.swing.JFrame {
         try {
             Integer.parseInt(jTextFieldTotalDropGoal.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'TotalDropGoal' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'TotalDropGoal' √© inv√°lido.");
             jTextFieldTotalDropGoal.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(jTextFieldTotalPenalidades.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'TotalPenalidades' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'TotalPenalidades' √© inv√°lido.");
             jTextFieldTotalPenalidades.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(jTextFieldTotalDerrotas.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Derrotas' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'Total de Derrotas' √© inv√°lido.");
             jTextFieldTotalDerrotas.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(jTextFieldTotalTry.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo '… inv·lido' … inv·lido.");
+            this.exibirInformacao("O valor do campo '√© inv√°lido' √© inv√°lido.");
             jTextFieldTotalTry.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(jTextFieldTotalEmpates.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Empates' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'Total de Empates' √© inv√°lido.");
             jTextFieldTotalEmpates.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(jTextFieldTotalPartidas.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Partidas' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'Total de Partidas' √© inv√°lido.");
             jTextFieldTotalPartidas.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(jTextFieldTotalConversao.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Nocautes' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'Total de Nocautes' √© inv√°lido.");
             jTextFieldTotalConversao.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(jTextFieldTotalVitorias.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de VitÛrias' … inv·lido.");
+            this.exibirInformacao("O valor do campo 'Total de Vit√≥rias' √© inv√°lido.");
             jTextFieldTotalVitorias.requestFocus();
             return false;
         }
@@ -415,7 +415,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
     }
 
     private void exibirInformacao(String info) {
-        JOptionPane.showMessageDialog(this, info, "AtenÁ„o", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, info, "Aten√ß√£o", JOptionPane.INFORMATION_MESSAGE);
     }
 
    private void atualizarPosicao() {
@@ -736,11 +736,11 @@ public class CadastroRugbyer extends javax.swing.JFrame {
                 .addGap(94, 94, 94))
         );
 
-        jTabbedPane1.addTab("InformaÁıes Gerais", jPanel1);
+        jTabbedPane1.addTab("Informa√ß√µes Gerais", jPanel1);
 
         jLabelLogradouro.setText("Logradouro:");
 
-        jLabelNumero.setText("N˙mero:");
+        jLabelNumero.setText("N√∫mero:");
 
         jLabelBairro.setText("Bairro:");
 
@@ -825,9 +825,9 @@ public class CadastroRugbyer extends javax.swing.JFrame {
                 .addGap(133, 133, 133))
         );
 
-        jTabbedPane1.addTab("EndereÁo", jPanel2);
+        jTabbedPane1.addTab("Endere√ßo", jPanel2);
 
-        jLabelNumeroCamisa.setText("N˙mero da Camisa:");
+        jLabelNumeroCamisa.setText("N√∫mero da Camisa:");
 
         jComboBoxNumeroCamisa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"}));
         jComboBoxNumeroCamisa.addActionListener(new java.awt.event.ActionListener() {
@@ -836,13 +836,13 @@ public class CadastroRugbyer extends javax.swing.JFrame {
             }
         });
 
-        jLabelPosicao.setText("PosiÁ„o:");
+        jLabelPosicao.setText("Posi√ß√£o:");
         
         jLabelTime.setText("Time:");
 
         jLabelTotalPartidas.setText("Total de Partidas:");
 
-        jLabelTotalVitorias.setText("Total de VitÛrias:");
+        jLabelTotalVitorias.setText("Total de Vit√≥rias:");
 
         jLabelTotalEmpates.setText("Total de Empates:");
 
@@ -850,7 +850,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
 
         jLabelTotalTry.setText("Total de Try:");
         
-        jLabelTotalConversao.setText("Total de Conversıes:");
+        jLabelTotalConversao.setText("Total de Convers√µes:");
         
         jLabelTotalDropGoal.setText("Total de DropGoal:");
         
@@ -858,7 +858,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
 
         jTextFieldPosicao.setEnabled(false);
 
-        jLabelPremiacoes.setText("PremiaÁıess:");
+        jLabelPremiacoes.setText("Premia√ß√µess:");
 
         jScrollPane2.setViewportView(jListPremiacoes);
 
@@ -981,7 +981,7 @@ public class CadastroRugbyer extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Ficha TÈcnica", jPanel3);
+        jTabbedPane1.addTab("Ficha T√©cnica", jPanel3);
 
         jButtonAlterar.setText("Alterar");
         jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -1171,7 +1171,7 @@ private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//
         Rugbyer rugbyerPesquisado = controleRugbyer.pesquisar(nome);
 
         if (rugbyerPesquisado == null) {
-            exibirInformacao("Rugbyer n„o encontrado.");
+            exibirInformacao("Rugbyer n√£o encontrado.");
         } else {
             this.umRugbyer = rugbyerPesquisado;
             this.preencherCampos();

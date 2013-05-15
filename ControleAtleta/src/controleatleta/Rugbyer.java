@@ -162,13 +162,4 @@ public class Rugbyer extends Atleta {
 			return "";
 		}
 	}
-	private static double obterWinRate(int totalVitorias, int totalPartidas){
-		return ((totalVitorias/totalPartidas)*100);
-	}
-	private static double obterDrawRate(int totalEmpates, int totalPartidas){
-		return ((totalEmpates/totalPartidas)*100);
-	}
-	private static double obterLoseRate(int totalDerrotas, int totalPartidas){
-		return ((totalDerrotas/totalPartidas)*100);
-	}
 }

@@ -1,77 +1,77 @@
 package controleatleta;
 
 public class Endereco {
-    
-    private String logradouro;
-    private String numero;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String pais;
-    private String complemento;
-    private String cep;
 
-    public String getBairro() {
-        return bairro;
-    }
+	private String logradouro;
+	private String numero;
+	private String bairro;
+	private String cidade;
+	private String estado;
+	private String pais;
+	private String complemento;
+	private String cep;
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
+	public String getBairro() {
+		return bairro;
+	}
 
-    public String getCep() {
-        return cep;
-    }
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+	public String getCep() {
+		return cep;
+	}
 
-    public String getCidade() {
-        return cidade;
-    }
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+	public String getCidade() {
+		return cidade;
+	}
 
-    public String getComplemento() {
-        return complemento;
-    }
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
+	public String getComplemento() {
+		return complemento;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public String getLogradouro() {
-        return logradouro;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
+	public String getLogradouro() {
+		return logradouro;
+	}
 
-    public String getNumero() {
-        return numero;
-    }
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
+	public String getNumero() {
+		return numero;
+	}
 
-    public String getPais() {
-        return pais;
-    }
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
 }

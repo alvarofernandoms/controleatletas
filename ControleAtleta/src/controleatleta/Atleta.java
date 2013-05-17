@@ -4,110 +4,110 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Atleta {
-    
-    ArrayList <String> telefones;
-    private String nome;
-    private Date dataNascimento;
-    private Endereco endereco;
-    private Double altura;
-    private Double peso;
-    private String nomePai;
-    private String nomeMae;
-    private char sexo;
-    private String rg;
-    private String cpf;
-    
-    public Atleta(String nome) {
-        this.nome = nome;
-        this.endereco = new Endereco();
-    }
 
-    public Double getAltura() {
-        return altura;
-    }
+	ArrayList<String> telefones;
+	private String nome;
+	private Date dataNascimento;
+	private Endereco endereco;
+	private Double altura;
+	private Double peso;
+	private String nomePai;
+	private String nomeMae;
+	private char sexo;
+	private String rg;
+	private String cpf;
 
-    public void setAltura(Double altura) {
-        this.altura = altura;
-    }
+	public Atleta(String nome) {
+		this.nome = nome;
+		this.endereco = new Endereco();
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public Double getAltura() {
+		return altura;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public Endereco getEndereco() {
+		return endereco;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
-    public String getNomeMae() {
-        return nomeMae;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNomeMae(String nomeMae) {
-        this.nomeMae = nomeMae;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getNomePai() {
-        return nomePai;
-    }
+	public String getNomeMae() {
+		return nomeMae;
+	}
 
-    public void setNomePai(String nomePai) {
-        this.nomePai = nomePai;
-    }
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
+	}
 
-    public Double getPeso() {
-        return peso;
-    }
+	public String getNomePai() {
+		return nomePai;
+	}
 
-    public void setPeso(Double peso) {
-        this.peso = peso;
-    }
+	public void setNomePai(String nomePai) {
+		this.nomePai = nomePai;
+	}
 
-    public String getRg() {
-        return rg;
-    }
+	public Double getPeso() {
+		return peso;
+	}
 
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
 
-    public char getSexo() {
-        return sexo;
-    }
+	public String getRg() {
+		return rg;
+	}
 
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
 
-    public ArrayList<String> getTelefones() {
-        return telefones;
-    }
+	public char getSexo() {
+		return sexo;
+	}
 
-    public void setTelefones(ArrayList<String> telefones) {
-        this.telefones = telefones;
-    }
-    
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
+	public ArrayList<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(ArrayList<String> telefones) {
+		this.telefones = telefones;
+	}
+
 }

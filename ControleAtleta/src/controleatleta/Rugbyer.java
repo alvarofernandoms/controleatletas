@@ -3,28 +3,34 @@ package controleatleta;
 import java.util.ArrayList;
 
 public class Rugbyer extends Atleta {
-	
+
 	/**
-	 * Fonte para explicações do jogo: http://pt.wikibooks.org/wiki/Guia_do_Rugby 
+	 * Fonte para explicações do jogo:
+	 * http://pt.wikibooks.org/wiki/Guia_do_Rugby 
 	 * Explicações resumidas.
 	 */
-	
-	private ArrayList<Premiacao> premiacoes;	
-	private int numeroCamisa; //No Rugby, as posições são definidas pelos números nas camisas.
-	//Posição: Se Pilar, Hooker, Segunda linha, Asa, Oitava, 
-	//Scrum-half, Fly half, Primeiro Centro, Segundo Centro, Ponta, FullBack
-	//Números de 1 a 15
+
+	private ArrayList<Premiacao> premiacoes;
+	private int numeroCamisa; // No Rugby, as posições são definidas pelos
+								// números nas camisas.
+	// Posição: Se Pilar, Hooker, Segunda linha, Asa, Oitava,
+	// Scrum-half, Fly half, Primeiro Centro, Segundo Centro, Ponta, FullBack
+	// Números de 1 a 15
 	private String posicao;
 	private String time;
 	private int totalPartidas;
 	private int totalVitorias;
 	private int totalEmpates;
 	private int totalDerrotas;
-	private int totalTry; //Fixar a bola com a mão na área depois da linha do in-goal.
-	private int totalConversao; //Após marcado o Try, fazer a bola passar por cima da trave e entre os postes.
-	private int totalDropGoal; //fazer a bola passar por cima da trave ao longo da partida.
-	private int totalPenalidades; //Faltas graves,  bola no local da infração e chutá-la em direção às traves. 
-	
+	private int totalTry; // Fixar a bola com a mão na área depois da linha do
+							// in-goal.
+	private int totalConversao; // Após marcado o Try, fazer a bola passar por
+								// cima da trave e entre os postes.
+	private int totalDropGoal; // fazer a bola passar por cima da trave ao longo
+								// da partida.
+	private int totalPenalidades; // Faltas graves, bola no local da infração e
+									// chutá-la em direção às traves.
+
 	public Rugbyer(String nome) {
 		super(nome);
 		// TODO Auto-generated constructor stub
@@ -117,7 +123,7 @@ public class Rugbyer extends Atleta {
 	public void setTotalPenalidades(int totalPenalidades) {
 		this.totalPenalidades = totalPenalidades;
 	}
-	
+
 	public void setPosicao(String posicao) {
 		this.posicao = posicao;
 	}
@@ -125,40 +131,39 @@ public class Rugbyer extends Atleta {
 	public String getPosicao() {
 		return posicao;
 	}
-	
-	//Posição: Se Pilar, Hooker, Segunda linha, Asa, Oitava, 
-	//Scrum-half, Fly half, Primeiro Centro, Segundo Centro, Ponta, FullBack
-	static String obterPosicaoDadoNumeroCamisa(int numeroCamisa){
-		if(numeroCamisa == 1){
+
+	// Posição: Se Pilar, Hooker, Segunda linha, Asa, Oitava,
+	// Scrum-half, Fly half, Primeiro Centro, Segundo Centro, Ponta, FullBack
+	static String obterPosicaoDadoNumeroCamisa(int numeroCamisa) {
+		if (numeroCamisa == 1) {
 			return "Pilar fechado";
-		} else if (numeroCamisa == 2){
+		} else if (numeroCamisa == 2) {
 			return "Hooker";
-		} else if (numeroCamisa == 3){
+		} else if (numeroCamisa == 3) {
 			return "Pilar aberto";
-		} else if (numeroCamisa == 4 || numeroCamisa == 5){
+		} else if (numeroCamisa == 4 || numeroCamisa == 5) {
 			return "Segunda linha";
-		} else if (numeroCamisa == 6){
+		} else if (numeroCamisa == 6) {
 			return "Asa cego";
-		} else if (numeroCamisa == 7){
+		} else if (numeroCamisa == 7) {
 			return "Asa aberto";
-		} else if (numeroCamisa == 8){
+		} else if (numeroCamisa == 8) {
 			return "Oitavo";
-		} else if (numeroCamisa == 9){
+		} else if (numeroCamisa == 9) {
 			return "Meio scrum";
-		} else if (numeroCamisa == 10){
+		} else if (numeroCamisa == 10) {
 			return "Abertura";
-		} else if (numeroCamisa == 11){
+		} else if (numeroCamisa == 11) {
 			return "Ponta esquerdo";
-		} else if (numeroCamisa == 12){
+		} else if (numeroCamisa == 12) {
 			return "Primeiro centro";
-		} else if (numeroCamisa == 13){
+		} else if (numeroCamisa == 13) {
 			return "Segundo centro";
-		} else if (numeroCamisa == 14){
+		} else if (numeroCamisa == 14) {
 			return "Ponta direito";
-		} else if (numeroCamisa == 15){
+		} else if (numeroCamisa == 15) {
 			return "Zagueiro";
-		}
-		else {
+		} else {
 			return "";
 		}
 	}
